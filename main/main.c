@@ -20,7 +20,30 @@ void ble_app_advertise(void);
 // Write data to ESP32 defined as server
 static int device_write(uint16_t conn_handle, uint16_t attr_handle, struct ble_gatt_access_ctxt *ctxt, void *arg)
 {
-    printf("Data from the client: %.*s\n", ctxt->om->om_len, ctxt->om->om_data);
+    // printf("Data from the client: %.*s\n", ctxt->om->om_len, ctxt->om->om_data);
+
+    char * data = (char *)ctxt->om->om_data;
+    if (strcmp(data, "LIGHT ON")==0)
+    {
+       printf("LIGHT ON");
+    }
+    else if (strcmp(data, "LIGHT OFF")==0)
+    {
+        printf("LIGHT OFF");
+    }
+    else if (strcmp(data, "FAN ON")==0)
+    {
+        printf("FAN ON");
+    }
+    else if (strcmp(data, "FAN OFF")==0)
+    {
+        printf("FAN OFF");
+    }
+    else{
+        printf("Data from the client: %.*s\n", ctxt->om->om_len, ctxt->om->om_data);
+    }
+    
+    
     return 0;
 }
 

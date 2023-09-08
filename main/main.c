@@ -23,21 +23,22 @@ static int device_write(uint16_t conn_handle, uint16_t attr_handle, struct ble_g
     // printf("Data from the client: %.*s\n", ctxt->om->om_len, ctxt->om->om_data);
 
     char * data = (char *)ctxt->om->om_data;
-    if (strcmp(data, "LIGHT ON")==0)
+    printf("%d\n",strcmp(data, (char *)"LIGHT ON")==0);
+    if (strcmp(data, (char *)"LIGHT ON\0")==0)
     {
-       printf("LIGHT ON");
+       printf("LIGHT ON\n");
     }
-    else if (strcmp(data, "LIGHT OFF")==0)
+    else if (strcmp(data, (char *)"LIGHT OFF\0")==0)
     {
-        printf("LIGHT OFF");
+        printf("LIGHT OFF\n");
     }
-    else if (strcmp(data, "FAN ON")==0)
+    else if (strcmp(data, (char *)"FAN ON\0")==0)
     {
-        printf("FAN ON");
+        printf("FAN ON\n");
     }
-    else if (strcmp(data, "FAN OFF")==0)
+    else if (strcmp(data, (char *)"FAN OFF\0")==0)
     {
-        printf("FAN OFF");
+        printf("FAN OFF\n");
     }
     else{
         printf("Data from the client: %.*s\n", ctxt->om->om_len, ctxt->om->om_data);
